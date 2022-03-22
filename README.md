@@ -30,7 +30,7 @@ dependencies:
       ~~~ 
   - EbTranslate.init() : void
       ~~~
-      void main({String? title}) {
+      void main() {
         WidgetsFlutterBinding.ensureInitialized();
 
         // init translation

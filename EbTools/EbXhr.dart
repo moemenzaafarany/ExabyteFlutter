@@ -42,7 +42,13 @@ class EbXhr {
     // add fields
     if (fields != null) {
       fields!.forEach((key, value) {
-        request!.fields[key] = value;
+        if (value is List) {
+          for (dynamic val in value) {
+            request!.fields['$key[]'] = val.toString();
+          }
+        } else {
+          request!.fields[key] = value.toString();
+        }
       });
     }
     // add files
@@ -59,10 +65,10 @@ class EbXhr {
     // request res
     http.StreamedResponse requestRes = await request!.send();
 
+    /*
     print("my contentlength:");
     print(request!.contentLength);
 
-    /*
     // upload ?
     int uploadTotal = request!.contentLength;
     int uploadLoaded = 0;

@@ -61,7 +61,7 @@ dependencies:
 ### **EbXhr:**
   - new EbXhr(String method, String url, { Map<String, dynamic>? headers, Map<String, dynamic>? fields, Map<String, dynamic>? files}) : Void
       ~~~
-      EbXhr xhr = new EbXhr("POST", "https://api.com/", fields: {"name": "omar", "type": "bitch"});
+      EbXhr xhr = new EbXhr("POST", "https://api.com/", fields: {"name": "John Smith"});
       ~~~
   - EbXhr.send() : Future\<EbXhrReponse\>
       ~~~

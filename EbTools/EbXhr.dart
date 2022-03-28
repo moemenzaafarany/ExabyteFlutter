@@ -14,8 +14,7 @@ class EbXhr {
   String method;
   String url;
   Map<String, dynamic>? headers;
-  Map<String, dynamic>? fields;
-  Map<String, File>? files;
+  Map<String, dynamic>? data;
   // Function(double progress, double speed, double estimate)? onUploading;
   // response
   late EbXhrReponse response;
@@ -25,8 +24,7 @@ class EbXhr {
     this.method,
     this.url, {
     this.headers,
-    this.fields,
-    this.files,
+    this.data,
     //  this.onUploading,
   }) {
     // create request
@@ -40,21 +38,22 @@ class EbXhr {
       });
     }
     // add fields
-    if (fields != null) {
-      fields!.forEach((key, value) {
+    if (data != null) {
+      data!.forEach((key, value) async {
         if (value is List) {
           for (dynamic val in value) {
-            request!.fields['$key[]'] = val.toString();
+            if (val is File) {
+              request!.files.add(await http.MultipartFile.fromPath('$key[]', val.path));
+            } else {
+              request!.fields['$key[]'] = val.toString();
+            }
           }
+        } else if (value is File) {
+          request!.files
+              .add(await http.MultipartFile.fromPath(key, value.path));
         } else {
           request!.fields[key] = value.toString();
         }
-      });
-    }
-    // add files
-    if (files != null) {
-      files!.forEach((key, value) async {
-        request!.files.add(await http.MultipartFile.fromPath(key, value.path));
       });
     }
     // callback

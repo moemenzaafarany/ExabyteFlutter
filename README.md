@@ -57,3 +57,29 @@ dependencies:
       ~~~
       EbTranslate.get("key-in-translation-json", locale: Locale("en"));
       ~~~ 
+
+### **EbXhr:**
+  - new EbXhr(String method, String url, { Map<String, dynamic>? headers, Map<String, dynamic>? fields, Map<String, dynamic>? files}) : Void
+      ~~~
+      EbXhr xhr = new EbXhr("POST", "https://api.com/", fields: {"name": "omar", "type": "bitch"});
+      ~~~
+  - EbXhr.send() : Future\<EbXhrReponse\>
+      ~~~
+      EbXhrReponse response = await xhr.send();
+      ~~~ 
+  - EbXhrReponse.httpCode : int | Response Http Code
+      ~~~
+      response.httpCode = 200 | 400 | 500;
+      ~~~ 
+  - EbXhrReponse.error : String? | Response Error
+      ~~~
+      response.error = null | "string error";
+      ~~~ 
+  - EbXhrReponse.bodyText : String | Response Body
+      ~~~
+      response.bodyText = '{"data": "stuff"}';
+      ~~~ 
+  - EbXhrReponse.bodyJson : Map?
+      ~~~
+      response.bodyJson = null | {data: "stuff"};
+      ~~~ 

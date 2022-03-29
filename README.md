@@ -89,6 +89,26 @@ dependencies:
     - new ExabyteAPIResponse(response) : Void | Our api response
         ~~~
         ExabyteAPIResponse exaRes = new ExabyteAPIResponse(response);
+        ~~~
+    - ExabyteAPIResponse.status : int? | Api Response status
+        ~~~
+        exaRes.status = 200 | 400 | 500;
+        ~~~ 
+    - ExabyteAPIResponse.statusCode : String? | Api Response status Text
+        ~~~
+        exaRes.statusCode = "OK" | "Bad Request" | "Internal Server Error";
+        ~~~ 
+    - ExabyteAPIResponse.error : String? | Api Response error
+        ~~~
+        exaRes.error = null | "error";
+        ~~~ 
+    - ExabyteAPIResponse.message : String? | Api Response message
+        ~~~
+        exaRes.message = null | "message";
+        ~~~ 
+    - ExabyteAPIResponse.data : dynamic? | Api Response data
+        ~~~
+        exaRes.data = null | ["data'] | {"data": "stuff"};
         ~~~ 
     - ExabyteAPIResponse.run({Function? s200, Function? s400, Function? s401, Function? s403, Function? s404, Function? s500, Function? sdefault}) : Void | Run Functions for each status
         ~~~

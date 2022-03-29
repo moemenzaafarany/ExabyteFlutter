@@ -112,7 +112,7 @@ dependencies:
         ~~~ 
     - ExabyteAPIResponse.run({Function? s200, Function? s400, Function? s401, Function? s403, Function? s404, Function? s500, Function? sdefault}) : Void | Run Functions for each status
         ~~~
-        exaRes(
+        exaRes.run(
           s200: ()=>print(200),
           s400: ()=>print(400),
           sdefault: ()=>print('else'),

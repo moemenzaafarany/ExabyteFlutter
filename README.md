@@ -59,27 +59,42 @@ dependencies:
       ~~~ 
 
 ### **EbXhr:**
-  - new EbXhr(String method, String url, { Map<String, dynamic>? headers, Map<String, dynamic>? data) : Void
-      ~~~
-      EbXhr xhr = new EbXhr("POST", "https://api.com/", data: {"name": "John Smith", "file": FILE()});
-      ~~~
-  - EbXhr.send() : Future\<EbXhrReponse\>
-      ~~~
-      EbXhrReponse response = await xhr.send();
-      ~~~ 
-  - EbXhrReponse.httpCode : int | Response Http Code
-      ~~~
-      response.httpCode = 200 | 400 | 500;
-      ~~~ 
-  - EbXhrReponse.error : String? | Response Error
-      ~~~
-      response.error = null | "string error";
-      ~~~ 
-  - EbXhrReponse.bodyText : String | Response Body
-      ~~~
-      response.bodyText = '{"data": "stuff"}';
-      ~~~ 
-  - EbXhrReponse.bodyJson : Map?
-      ~~~
-      response.bodyJson = null | {data: "stuff"};
-      ~~~ 
+  - EbXhr
+    - new EbXhr(String method, String url, { Map<String, dynamic>? headers, Map<String, dynamic>? data) : Void
+        ~~~
+        EbXhr xhr = new EbXhr("POST", "https://api.com/", data: {"name": "John Smith", "file": FILE()});
+        ~~~
+    - EbXhr.send() : Future\<EbXhrReponse\>
+        ~~~
+        EbXhrReponse response = await xhr.send();
+        ~~~ 
+  - EbXhrReponse
+    - EbXhrReponse.httpCode : int | Response Http Code
+        ~~~
+        response.httpCode = 200 | 400 | 500;
+        ~~~ 
+    - EbXhrReponse.error : String? | Response Error
+        ~~~
+        response.error = null | "string error";
+        ~~~ 
+    - EbXhrReponse.bodyText : String | Response Body
+        ~~~
+        response.bodyText = '{"data": "stuff"}';
+        ~~~ 
+    - EbXhrReponse.bodyJson : Map?
+        ~~~
+        response.bodyJson = null | {data: "stuff"};
+        ~~~ 
+  - ExabyteAPIResponse
+    - new ExabyteAPIResponse(response) : Void | Our api response
+        ~~~
+        ExabyteAPIResponse exaRes = new ExabyteAPIResponse(response);
+        ~~~ 
+    - ExabyteAPIResponse.run({Function? s200, Function? s400, Function? s401, Function? s403, Function? s404, Function? s500, Function? sdefault}) : Void | Run Functions for each status
+        ~~~
+        exaRes(
+          s200: ()=>print(200),
+          s400: ()=>print(400),
+          sdefault: ()=>print('else'),
+        );
+        ~~~ 

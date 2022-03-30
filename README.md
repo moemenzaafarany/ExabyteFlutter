@@ -118,3 +118,34 @@ dependencies:
           sdefault: ()=>print('else'),
         );
         ~~~ 
+
+### **EbUI:**
+  - EbUI.theme : ThemeMode | Current theme mode
+      ~~~
+      EbUI.theme = ThemeMode.system | ThemeMode.light  | ThemeMode.dark;
+      ~~~
+  - EbUI.fontSize : double | set fontsize for project
+      ~~~
+      EbUI.fontSize = 16;
+      ~~~
+  - EbUI.iconSize : double | set icon size for project
+      ~~~
+      EbUI.iconSize = 20;
+      ~~~
+  - EbUI.fontFamily : ThemeMode | set font family for project
+      ~~~
+      EbUI.fontFamily = "Roboto";
+      ~~~
+  - EbUI.screen(BuildContext context, double? xs, double? sm, double? md, double? lg, double? xl) : double | get double per screen size
+      ~~~
+      double grid = EbUI.breakpoints.screen(context, 1, 2, 3, 4, 5);
+      ~~~
+  - EbUI.themeData() : ThemeData | get current themedata with current colors and params
+      ~~~
+      EbUI.themeData();
+      ~~~
+  - EbUI.colors : EbUIColors  | Current ui colors
+    - EbUI.colors.{any param} : Color | colors in ui
+
+      
+    

@@ -20,7 +20,7 @@ class EbUI {
       double? lg, double? xl) {
     // width and res
     double w = MediaQuery.of(context).size.width;
-    double r = 0.0;
+    double r = xs ?? sm ?? md ?? lg ?? xl;
     // check allwidth and return correct value
     if (xs != null && w >= _xs) r = xs;
     if (sm != null && w >= _sm) r = sm;

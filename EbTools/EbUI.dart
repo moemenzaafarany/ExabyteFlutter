@@ -4,13 +4,33 @@ import 'package:flutter/cupertino.dart';
 
 //================================================
 class EbUI {
+  static int _xs = 0;
+  static int _sm = 576;
+  static int _md = 768;
+  static int _lg = 992;
+  static int _xl = 1200;
+  //
   static ThemeMode theme = ThemeMode.system;
   static double fontSize = 16;
   static double iconSize = 20;
   static String fontFamily = "Roboto";
   static EbUIColors colors = EbUIColors();
-  static EbUIBreakpoints breakpoints = EbUIBreakpoints();
-
+  //
+  static double screen(BuildContext context, double? xs, double? sm, double? md,
+      double? lg, double? xl) {
+    // width and res
+    double w = MediaQuery.of(context).size.width;
+    double r = 0.0;
+    // check allwidth and return correct value
+    if (xs != null && w >= _xs) r = xs;
+    if (sm != null && w >= _sm) r = sm;
+    if (md != null && w >= _md) r = md;
+    if (lg != null && w >= _lg) r = lg;
+    if (xl != null && w >= _xl) r = xl;
+    //return
+    return r;
+  }
+  //
   static ThemeData themeData() {
     return ThemeData(
       applyElevationOverlayColor: true,
@@ -222,31 +242,6 @@ class EbUIColors {
 
   // Color c = Color(0xff);
 
-}
-
-//================================================
-class EbUIBreakpoints {
-  //sizes
-  int _xs = 0;
-  int _sm = 576;
-  int _md = 768;
-  int _lg = 992;
-  int _xl = 1200;
-  // double
-  double screen(BuildContext context, double? xs, double? sm, double? md,
-      double? lg, double? xl) {
-    // width and res
-    double w = MediaQuery.of(context).size.width;
-    double r = 0.0;
-    // check allwidth and return correct value
-    if (xs != null && w >= _xs) r = xs;
-    if (sm != null && w >= _sm) r = sm;
-    if (md != null && w >= _md) r = md;
-    if (lg != null && w >= _lg) r = lg;
-    if (xl != null && w >= _xl) r = xl;
-    //return
-    return r;
-  }
 }
 
 

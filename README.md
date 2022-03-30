@@ -138,7 +138,7 @@ dependencies:
       ~~~
   - EbUI.screen(BuildContext context, double? xs, double? sm, double? md, double? lg, double? xl) : double | get double per screen size
       ~~~
-      double grid = EbUI.breakpoints.screen(context, 1, 2, 3, 4, 5);
+      double grid = EbUI.screen(context, 1, 2, 3, 4, 5);
       ~~~
   - EbUI.themeData() : ThemeData | get current themedata with current colors and params
       ~~~

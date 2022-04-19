@@ -40,19 +40,25 @@ class EbXhr {
     // add fields
     if (data != null) {
       data!.forEach((key, value) async {
-        if (value is List) {
-          for (dynamic val in value) {
-            if (val is File) {
-              request!.files.add(await http.MultipartFile.fromPath('$key[]', val.path));
+        if (data != null) {
+          data.forEach((key, value) async {
+            if (value is List) {
+              int i = 0;
+              for (dynamic val in value) {
+                if (val is File) {
+                  request.files
+                      .add(await http.MultipartFile.fromPath('$key[$i]', val.path));
+                } else {
+                  request.fields['$key[$i]'] = val.toString();
+                }
+                i++;
+              }
+            } else if (value is File) {
+              request.files.add(await http.MultipartFile.fromPath(key, value.path));
             } else {
-              request!.fields['$key[]'] = val.toString();
+              request.fields[key] = value.toString();
             }
-          }
-        } else if (value is File) {
-          request!.files
-              .add(await http.MultipartFile.fromPath(key, value.path));
-        } else {
-          request!.fields[key] = value.toString();
+          });
         }
       });
     }
